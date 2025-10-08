@@ -1,12 +1,8 @@
 module.exports = {
-	'url': 'mongodb://127.0.0.1:27017',
-	'options': {
-		'dbName': 'CLUB3333', // red
-		//'dbName': 'GAME', // red
-		//'dbName': 'admin', // red
-                //'dbName': 'vn11022021', // red
-		'useNewUrlParser': true,
-		'useUnifiedTopology': true,
-		//'autoIndex':       false,
-	},
+  url: 'mongodb+srv://chienq895:chien2k5@cluster0.ycj4jl7.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
+  options: {
+    dbName: 'CLUB3333',
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
 };
