@@ -1,84 +1,120 @@
 ﻿require('dotenv').config();
-var cors = require('cors');
-let Telegram      = require('node-telegram-bot-api');
-let TelegramToken = process.env.TELEGRAM_TOKEN || '5180271425:AAFGUtqkl4_laRpVksB4YTCswsx63sLBDew';
-let TelegramBot   = new Telegram(TelegramToken, {polling: true});
-let fs            = require('fs');
-let express       = require('express');
-let app           = express();
 
-app.use(cors({
-    origin: '*',
-    optionsSuccessStatus: 200
-}));
+const cors = require('cors');
+const fs = require('fs');
+const path = require('path');
+const express = require('express');
+const app = express();
 
-let port       = process.env.PORT || 80;
-let expressWs  = require('express-ws')(app);
-let bodyParser = require('body-parser');
-var morgan = require('morgan');
+const Telegram = require('node-telegram-bot-api');
+const TelegramToken = process.env.TELEGRAM_TOKEN || 'YOUR_TOKEN_HERE'; // có thể giữ hardcode nếu bạn muốn
+const TelegramBot = new Telegram(TelegramToken, { polling: true });
 
-// Setting & Connect to the Database
-let configDB = require('./config/database');
-let mongoose = require('mongoose');
-require('mongoose-long')(mongoose); // INT 64bit
+const bodyParser = require('body-parser');
+const morgan = require('morgan');
+const expressWs = require('express-ws')(app);
 
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
+
+// ====== DB ======
+const configDB = require('./config/database');
+const mongoose = require('mongoose');
+require('mongoose-long')(mongoose);
 mongoose.set('useFindAndModify', false);
-mongoose.set('useCreateIndex',   true);
+mongoose.set('useCreateIndex', true);
 
-// Kết nối MongoDB với timeout và catch error
+// Kết nối Mongo (có timeout, log rõ ràng)
 mongoose.connect(configDB.url, {
-    ...configDB.options,
-    serverSelectionTimeoutMS: 8000,
-    connectTimeoutMS: 8000,
-})
-.then(() => console.log('MongoDB connected'))
-.catch(err => console.error('MongoDB connect error:', err.message));
+  ...configDB.options,
+  serverSelectionTimeoutMS: 8000,
+  connectTimeoutMS: 8000,
+}).then(() => {
+  console.log('MongoDB connected');
+}).catch(err => {
+  console.error('MongoDB connect error:', err && err.message ? err.message : err);
+});
 
-// cấu hình tài khoản admin mặc định và các dữ liệu mặc định
-require('./config/admin');
-
-// đọc dữ liệu from
+// ====== App base middlewares ======
+app.use(cors({ origin: '*', optionsSuccessStatus: 200 }));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan('combined'));
 
-app.set('view engine', 'ejs'); // chỉ định view engine là ejs
-app.set('views', './views');   // chỉ định thư mục view
+app.set('view engine', 'ejs');
+app.set('views', './views');
 
-// Serve static html, js, css, and image files from the 'public' directory
+// Serve static public
 app.use(express.static('public'));
 
-// Health check route cho Render
+// Health check cho Render
 app.get('/', (req, res) => res.send('OK'));
 
-// server socket
-let redT = expressWs.getWss();
+// ====== Session (bắt buộc để login admin giữ trạng thái) ======
+app.set('trust proxy', 1); // cần khi chạy sau proxy (HTTPS Render)
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'change-this-secret',
+  resave: false,
+  saveUninitialized: false,
+  store: MongoStore.create({ mongoUrl: configDB.url }),
+  cookie: {
+    secure: true,      // HTTPS
+    httpOnly: true,
+    sameSite: 'lax',
+    maxAge: 1000 * 60 * 60 // 1 giờ
+  }
+}));
+
+// Nếu có giao diện admin tĩnh, mở đường dẫn /admin
+// (Không bắt buộc. Bỏ nếu bạn dùng CMS qua router)
+if (fs.existsSync(path.join(__dirname, 'ADMIN'))) {
+  app.use('/admin', express.static('ADMIN'));
+  app.get('/admin/*', (req, res) =>
+    res.sendFile(path.join(__dirname, 'ADMIN', 'index.html'))
+  );
+}
+
+// ====== Socket hub ======
+const redT = expressWs.getWss();
 process.redT = redT;
 redT.telegram = TelegramBot;
 global['redT'] = redT;
 global['userOnline'] = 0;
-require('./app/Helpers/socketUser')(redT); // Add function socket
-require('./routerHttp')(app, redT);        // load các routes HTTP
-require('./routerCMS')(app, redT);         // load routes CMS
-require('./routerSocket')(app, redT);      // load các routes WebSocket
 
-// === TÀI XỈU: dùng export object, KHÔNG gọi như hàm ===
+// ====== Admin & dữ liệu mặc định ======
+require('./config/admin'); // tạo admin mặc định nếu thiếu
+
+// ====== Routers ======
+require('./app/Helpers/socketUser')(redT); // socket helpers
+require('./routerHttp')(app, redT);        // HTTP routes
+require('./routerCMS')(app, redT);         // CMS routes (đăng nhập /api/vl/login ...)
+require('./routerSocket')(app, redT);      // WebSocket routes
+
+// ====== Game Cron ======
+// Tài Xỉu (export object: ensureHUDefault + playGame)
 const TaiXiu = require('./app/Cron/taixiu');
-TaiXiu.ensureHUDefault();
-TaiXiu.playGame(redT);
-
-// Bầu cua vẫn giữ kiểu cũ nếu file đó export là function
-require('./app/Cron/baucua')(redT);
-
-require('./config/Cron')();
-
-// Chỉ khởi tạo bot nếu có token (tránh 409 khi test)
-// hoặc bạn để nguyên, nhưng đảm bảo chỉ 1 nơi chạy polling
-if (process.env.TELEGRAM_TOKEN) {
-  require('./app/Telegram/Telegram')(redT);  // Telegram Bot
+if (TaiXiu && typeof TaiXiu.ensureHUDefault === 'function') {
+  TaiXiu.ensureHUDefault();
+}
+if (TaiXiu && typeof TaiXiu.playGame === 'function') {
+  TaiXiu.playGame(redT);
 }
 
+// Bầu Cua (giữ nguyên nếu file này export là function)
+require('./app/Cron/baucua')(redT);
 
-app.listen(port, function() {
-    console.log("Server listen on port", port);
+// Cron tổng (lưu ý viết hoa đúng tên file: Cron.js)
+require('./config/Cron')();
+
+// Telegram Bot – nếu muốn tắt khi test, comment dòng dưới
+require('./app/Telegram/Telegram')(redT);
+
+// ====== Start server ======
+const port = process.env.PORT || 80;
+app.listen(port, () => {
+  console.log('Server listen on port', port);
 });
+
+// ====== “Áo phao” chống crash khi đang debug ======
+process.on('uncaughtException', (e) => console.error('[uncaughtException]', e));
+process.on('unhandledRejection', (e) => console.error('[unhandledRejection]', e));
