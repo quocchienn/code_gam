@@ -1,6 +1,6 @@
 'use strict';
 
-let TXCuoc    = require('../../Models/TaiXiu_cuoc');
+let TXCuoc    = require('../../Models/TaiXiu_cuoc.js');
 let TaiXiu_phien = require('../../Models/TaiXiu_phien');
 let HU_game   = require('../../Models/HU');
 let HUTX      = require('../../Models/HUTX');
