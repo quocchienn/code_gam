@@ -1,11 +1,12 @@
 'use strict';
 
-let TXCuoc    = require('../../Models/TaiXiu_cuoc.js');
-let TaiXiu_phien = require('../../Models/TaiXiu_phien');
-let HU_game   = require('../../Models/HU');
-let HUTX      = require('../../Models/HUTX');
-let UserInfo  = require('../../Models/UserInfo');
-let Helpers   = require('../../Helpers/Helpers');
+// ĐÚNG (chỉ 1 dấu .. vì từ Cron/ sang Models/)
+let TXCuoc       = require('../Models/TaiXiu_cuoc');
+let TaiXiu_phien = require('../Models/TaiXiu_phien');
+let HU_game      = require('../Models/HU');
+let HUTX         = require('../Models/HUTX');
+let UserInfo     = require('../Models/UserInfo');
+let Helpers   = require('../Helpers/Helpers');
 
 // --- Bọc lỗi toàn cục để không chết process ---
 process.on('uncaughtException', (e) => console.error('[uncaughtException]', e));
