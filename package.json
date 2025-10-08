@@ -31,6 +31,8 @@
 		"mongoose-auto-increment-reworked": "^1.2.1",
 		"mongoose-long": "^0.8.0",
 		"morgan": "^1.9.1",
+		"express-session": "^1.17.3",
+        "connect-mongo": "^5.0.0"
 		"node-telegram-bot-api": "^0.66.0",
 		"node-tmux": "^1.0.2",
 		"passport": "^0.7.0",
