@@ -1,0 +1,272 @@
+
+avenger_bg_jackpot.png
+size: 2048,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+1
+  rotate: false
+  xy: 2, 749
+  size: 391, 256
+  orig: 391, 256
+  offset: 0, 0
+  index: -1
+Avengers
+  rotate: false
+  xy: 1377, 967
+  size: 282, 38
+  orig: 282, 103
+  offset: 0, 32
+  index: -1
+_0001_Fix_00035
+  rotate: false
+  xy: 198, 432
+  size: 138, 146
+  orig: 305, 167
+  offset: 8, 10
+  index: -1
+_0002_Fix_00034
+  rotate: false
+  xy: 1504, 704
+  size: 144, 138
+  orig: 305, 167
+  offset: 7, 19
+  index: -1
+_0003_Fix_00033
+  rotate: false
+  xy: 188, 301
+  size: 157, 129
+  orig: 305, 167
+  offset: 5, 29
+  index: -1
+_0004_Fix_00032
+  rotate: true
+  xy: 466, 565
+  size: 170, 125
+  orig: 305, 167
+  offset: 4, 35
+  index: -1
+_0005_Fix_00031
+  rotate: false
+  xy: 593, 471
+  size: 179, 122
+  orig: 305, 167
+  offset: 6, 40
+  index: -1
+_0006_Fix_00030
+  rotate: false
+  xy: 1847, 883
+  size: 182, 122
+  orig: 305, 167
+  offset: 15, 41
+  index: -1
+_0007_Fix_00029
+  rotate: false
+  xy: 791, 752
+  size: 179, 122
+  orig: 305, 167
+  offset: 28, 40
+  index: -1
+_0008_Fix_00028
+  rotate: false
+  xy: 1327, 720
+  size: 175, 122
+  orig: 305, 167
+  offset: 41, 40
+  index: -1
+_0009_Fix_00027
+  rotate: false
+  xy: 1650, 623
+  size: 170, 121
+  orig: 305, 167
+  offset: 55, 40
+  index: -1
+_0010_Fix_00026
+  rotate: false
+  xy: 1822, 510
+  size: 172, 121
+  orig: 305, 167
+  offset: 67, 40
+  index: -1
+_0011_Fix_00025
+  rotate: false
+  xy: 908, 628
+  size: 171, 121
+  orig: 305, 167
+  offset: 78, 40
+  index: -1
+_0012_Fix_00024
+  rotate: false
+  xy: 1822, 633
+  size: 170, 123
+  orig: 305, 167
+  offset: 90, 39
+  index: -1
+_0013_Fix_00023
+  rotate: false
+  xy: 1822, 758
+  size: 171, 123
+  orig: 305, 167
+  offset: 100, 39
+  index: -1
+_0014_Fix_00022
+  rotate: false
+  xy: 972, 751
+  size: 176, 123
+  orig: 305, 167
+  offset: 108, 39
+  index: -1
+_0015_Fix_00021
+  rotate: false
+  xy: 2, 305
+  size: 184, 139
+  orig: 305, 167
+  offset: 112, 27
+  index: -1
+_0016_Fix_00020
+  rotate: false
+  xy: 2, 156
+  size: 176, 147
+  orig: 305, 167
+  offset: 124, 19
+  index: -1
+_0017_Fix_00019
+  rotate: false
+  xy: 2, 2
+  size: 166, 152
+  orig: 305, 167
+  offset: 136, 13
+  index: -1
+_0018_Fix_00018
+  rotate: false
+  xy: 309, 580
+  size: 155, 155
+  orig: 305, 167
+  offset: 148, 10
+  index: -1
+_0019_Fix_00017
+  rotate: true
+  xy: 751, 599
+  size: 149, 155
+  orig: 305, 167
+  offset: 154, 7
+  index: -1
+_0020_Fix_00016
+  rotate: false
+  xy: 593, 595
+  size: 156, 153
+  orig: 305, 167
+  offset: 147, 5
+  index: -1
+_0021_Fix_00015
+  rotate: false
+  xy: 180, 153
+  size: 168, 146
+  orig: 305, 167
+  offset: 137, 3
+  index: -1
+_0022_Fix_00014
+  rotate: false
+  xy: 170, 11
+  size: 177, 140
+  orig: 305, 167
+  offset: 128, 2
+  index: -1
+_0023_Fix_00013
+  rotate: false
+  xy: 395, 737
+  size: 187, 135
+  orig: 305, 167
+  offset: 116, 1
+  index: -1
+_0024_Fix_00012
+  rotate: false
+  xy: 2, 446
+  size: 194, 132
+  orig: 305, 167
+  offset: 103, 0
+  index: -1
+_0025_Fix_00011
+  rotate: false
+  xy: 395, 874
+  size: 196, 131
+  orig: 305, 167
+  offset: 93, 0
+  index: -1
+_0026_Fix_00010
+  rotate: false
+  xy: 593, 875
+  size: 196, 130
+  orig: 305, 167
+  offset: 83, 1
+  index: -1
+_0027_Fix_00009
+  rotate: false
+  xy: 791, 876
+  size: 194, 129
+  orig: 305, 167
+  offset: 75, 2
+  index: -1
+_0028_Fix_00008
+  rotate: false
+  xy: 1183, 876
+  size: 192, 129
+  orig: 305, 167
+  offset: 66, 2
+  index: -1
+_0029_Fix_00007
+  rotate: false
+  xy: 987, 876
+  size: 194, 129
+  orig: 305, 167
+  offset: 55, 2
+  index: -1
+_0030_Fix_00006
+  rotate: false
+  xy: 1377, 844
+  size: 184, 121
+  orig: 305, 167
+  offset: 50, 7
+  index: -1
+_0031_Fix_00005
+  rotate: false
+  xy: 1661, 883
+  size: 184, 122
+  orig: 305, 167
+  offset: 39, 6
+  index: -1
+_0032_Fix_00004
+  rotate: false
+  xy: 593, 750
+  size: 181, 123
+  orig: 305, 167
+  offset: 32, 5
+  index: -1
+_0033_Fix_00003
+  rotate: false
+  xy: 1150, 749
+  size: 175, 125
+  orig: 305, 167
+  offset: 25, 4
+  index: -1
+_0034_Fix_00002
+  rotate: false
+  xy: 1650, 746
+  size: 170, 135
+  orig: 305, 167
+  offset: 18, 3
+  index: -1
+_0035_Fix_00001
+  rotate: false
+  xy: 2, 580
+  size: 305, 167
+  orig: 305, 167
+  offset: 0, 0
+  index: -1
+_0036_Fix_00000
+  rotate: false
+  xy: 774, 454
+  size: 155, 143
+  orig: 305, 167
+  offset: 10, 5
+  index: -1

@@ -1,0 +1,62 @@
+
+avenger_bigwin.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+B
+  rotate: true
+  xy: 2, 2
+  size: 152, 171
+  orig: 152, 171
+  offset: 0, 0
+  index: -1
+G
+  rotate: false
+  xy: 856, 322
+  size: 106, 186
+  orig: 106, 186
+  offset: 0, 0
+  index: -1
+I
+  rotate: true
+  xy: 380, 125
+  size: 81, 171
+  orig: 81, 171
+  offset: 0, 0
+  index: -1
+I2
+  rotate: true
+  xy: 553, 125
+  size: 81, 171
+  orig: 82, 171
+  offset: 0, 0
+  index: -1
+Mjohnir
+  rotate: false
+  xy: 380, 208
+  size: 321, 300
+  orig: 321, 301
+  offset: 0, 1
+  index: -1
+N
+  rotate: false
+  xy: 703, 337
+  size: 151, 171
+  orig: 151, 171
+  offset: 0, 0
+  index: -1
+StormBreaker
+  rotate: false
+  xy: 2, 156
+  size: 376, 352
+  orig: 376, 353
+  offset: 0, 1
+  index: -1
+W
+  rotate: true
+  xy: 175, 21
+  size: 133, 171
+  orig: 133, 171
+  offset: 0, 0
+  index: -1

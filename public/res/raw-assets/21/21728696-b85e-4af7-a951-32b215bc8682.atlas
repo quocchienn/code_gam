@@ -1,0 +1,62 @@
+
+avenger_quay_btn.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+BACK
+  rotate: false
+  xy: 370, 160
+  size: 229, 69
+  orig: 230, 69
+  offset: 0, 0
+  index: -1
+BUTTON BLUE
+  rotate: false
+  xy: 370, 353
+  size: 243, 120
+  orig: 244, 121
+  offset: 0, 1
+  index: -1
+BUTTON RED
+  rotate: false
+  xy: 370, 231
+  size: 243, 120
+  orig: 244, 121
+  offset: 0, 1
+  index: -1
+D DOWN
+  rotate: false
+  xy: 2, 71
+  size: 340, 49
+  orig: 340, 50
+  offset: 0, 1
+  index: -1
+DECK UP
+  rotate: false
+  xy: 2, 122
+  size: 366, 351
+  orig: 366, 352
+  offset: 0, 1
+  index: -1
+GRAY BUTTON
+  rotate: false
+  xy: 615, 354
+  size: 243, 119
+  orig: 244, 120
+  offset: 0, 1
+  index: -1
+LIGHT
+  rotate: false
+  xy: 615, 211
+  size: 202, 141
+  orig: 203, 141
+  offset: 0, 0
+  index: -1
+LIGHT EFFECT
+  rotate: false
+  xy: 2, 2
+  size: 260, 67
+  orig: 260, 68
+  offset: 0, 1
+  index: -1

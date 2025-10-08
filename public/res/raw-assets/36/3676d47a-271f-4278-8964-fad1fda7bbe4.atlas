@@ -1,0 +1,62 @@
+
+avenger_freespin.png
+size: 2048,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+E
+  rotate: false
+  xy: 531, 251
+  size: 192, 256
+  orig: 193, 257
+  offset: 0, 1
+  index: -1
+E2
+  rotate: false
+  xy: 898, 251
+  size: 168, 256
+  orig: 168, 257
+  offset: 0, 1
+  index: -1
+F
+  rotate: false
+  xy: 273, 251
+  size: 256, 256
+  orig: 257, 257
+  offset: 0, 1
+  index: -1
+I
+  rotate: true
+  xy: 518, 79
+  size: 170, 256
+  orig: 170, 257
+  offset: 0, 1
+  index: -1
+N
+  rotate: false
+  xy: 2, 251
+  size: 269, 256
+  orig: 269, 257
+  offset: 0, 1
+  index: -1
+P
+  rotate: true
+  xy: 260, 67
+  size: 182, 256
+  orig: 183, 257
+  offset: 0, 1
+  index: -1
+R
+  rotate: true
+  xy: 2, 2
+  size: 247, 256
+  orig: 248, 257
+  offset: 0, 1
+  index: -1
+S
+  rotate: false
+  xy: 725, 251
+  size: 171, 256
+  orig: 171, 257
+  offset: 0, 1
+  index: -1
