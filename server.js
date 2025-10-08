@@ -57,15 +57,27 @@ process.redT = redT;
 redT.telegram = TelegramBot;
 global['redT'] = redT;
 global['userOnline'] = 0;
-
 require('./app/Helpers/socketUser')(redT); // Add function socket
 require('./routerHttp')(app, redT);        // load các routes HTTP
 require('./routerCMS')(app, redT);         // load routes CMS
 require('./routerSocket')(app, redT);      // load các routes WebSocket
-require('./app/Cron/taixiu')(redT);        // Chạy game Tài Xỉu
-require('./app/Cron/baucua')(redT);        // Chạy game Bầu Cua
+
+// === TÀI XỈU: dùng export object, KHÔNG gọi như hàm ===
+const TaiXiu = require('./app/Cron/taixiu');
+TaiXiu.ensureHUDefault();
+TaiXiu.playGame(redT);
+
+// Bầu cua vẫn giữ kiểu cũ nếu file đó export là function
+require('./app/Cron/baucua')(redT);
+
 require('./config/Cron')();
-require('./app/Telegram/Telegram')(redT);  // Telegram Bot
+
+// Chỉ khởi tạo bot nếu có token (tránh 409 khi test)
+// hoặc bạn để nguyên, nhưng đảm bảo chỉ 1 nơi chạy polling
+if (process.env.TELEGRAM_TOKEN) {
+  require('./app/Telegram/Telegram')(redT);  // Telegram Bot
+}
+
 
 app.listen(port, function() {
     console.log("Server listen on port", port);
